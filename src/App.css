@@ -1,7 +1,7 @@
 /* General App Styles */
 .App {
   /* height: 100vh; */
-  background-color: #FFF5BA; /* Soft yellow background */
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,14 +19,14 @@
   align-items: center;
   margin-top: 5%;
   width: 100%;
-  max-width: 600px;
+  max-width: 800px;
 }
 
 /* Lyrics Container */
 .lyrics-container {
   text-align: center;
   width: 100%;
-  background-color: #FFEE8E;
+  background-color: hsl(185, 80%, 92%);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -81,17 +81,17 @@ button:hover {
   margin-top: 40px;
   text-align: left;
   padding: 20px;
-  background-color: #fff;
+  background-color: hsl(185, 80%, 92%);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 600px;
+  max-width: 800px;
     margin-bottom: 5%;
       margin-top: 5%;
 }
 
 .top-songs-section h2 {
-  color: #333;
+  color: #9bdaf0;
   margin-bottom: 15px;
 }
 
@@ -101,7 +101,7 @@ button:hover {
 }
 
 .top-songs-section li {
-  background-color: #f4f4f4;
+  background-color: #c7f2f0;
   padding: 8px;
   margin: 5px 0;
   border-radius: 4px;
