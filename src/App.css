@@ -1,17 +1,27 @@
-/* General App Styles */
-.App {
-  /* height: 100vh; */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+#root {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
 
+.App {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-family: Arial, sans-serif;
- 
   box-sizing: border-box;
+  width: 100%;
+  min-height: 100vh;
+  background: radial-gradient(rgb(6, 48, 9), rgb(0, 0, 0));
 }
 
-/* Lyrics Box */
 .lyrics-box {
   display: flex;
   flex-direction: row;
@@ -22,42 +32,53 @@
   max-width: 800px;
 }
 
-/* Lyrics Container */
 .lyrics-container {
   text-align: center;
   width: 100%;
-  background-color: hsl(185, 80%, 92%);
+  background: rgba(255, 255, 255, 0.1);
   padding: 20px;
+  margin: 30px;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 input {
   padding: 10px;
-  margin: 5px;
+  margin: 15px;
   width: 40%;
-  max-width: 100%; /* Make input width 100% for small screens */
-  border: 1px solid #ccc;
+  max-width: 100%;
+  border: 1px solid #ecf155;
   border-radius: 4px;
+  background-color: rgb(240, 247, 203);
+  margin-bottom: 30px;
+}
+
+.heading {
+  color: #ecf155;
+  margin-bottom: 30px;
 }
 
 button {
   padding: 10px 15px;
   margin: 10px;
-  background-color: #9bdaf0;
-  color: white;
+  background-color: #ecf155;
+  font-weight: bold;
+  color: rgb(5, 131, 78);
   border: none;
   border-radius: 4px;
   cursor: pointer;
   width: 100%;
-  max-width: 250px;
+  max-width: 150px;
 }
 
 button:hover {
-  background-color: #00adb3;
+  background-color: #759803;
+  color: white;
 }
 
-/* Lyrics Display */
 .lyrics {
   margin-top: 20px;
   white-space: pre-wrap;
@@ -70,86 +91,112 @@ button:hover {
   max-width: 600px;
 }
 
-/* Error Message */
 .error {
   color: red;
   margin-top: 10px;
 }
 
-/* Top Songs Section */
 .top-songs-section {
-  margin-top: 40px;
-  text-align: left;
+  margin: 40px auto;
+  text-align: center;
   padding: 20px;
-  background-color: hsl(185, 80%, 92%);
+  margin: 30px;
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   width: 100%;
   max-width: 800px;
-    margin-bottom: 5%;
-      margin-top: 5%;
 }
 
-.top-songs-section h2 {
-  color: #9bdaf0;
-  margin-bottom: 15px;
+.song-card {
+  border-radius: 8px !important;
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: white;
+  text-align: center;
+  height: 250px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease-in-out;
 }
 
-.top-songs-section ul {
-  list-style-type: none;
-  padding: 0;
+.song-card:hover {
+  transform: translateY(-5px);
 }
 
-.top-songs-section li {
-  background-color: #c7f2f0;
-  padding: 8px;
-  margin: 5px 0;
-  border-radius: 4px;
-  font-size: 16px;
-}
-
-/* Responsive Styles for Different Screen Sizes */
 @media screen and (max-width: 768px) {
-  /* Mobile Styles */
+  .top-songs-section li {
+    width: calc(50% - 16px);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .top-songs-section li {
+    width: 100%;
+  }
+}
+
+.popup-box {
+  border-radius: 24px;
+}
+
+.popup-content {
+  background-color: rgb(248, 219, 243);
+}
+
+.popup-bottom {
+  background-color: rgb(248, 219, 243);
+}
+
+@media screen and (max-width: 768px) {
   .App {
-    padding: 10px; /* Less padding on smaller screens */
+    padding: 10px;
   }
 
   .lyrics-container,
   .top-songs-section {
-    max-width: 100%; /* Full width for small screens */
+    max-width: 100%;
     padding: 15px;
   }
 
   input,
   button {
-    max-width: 100%; /* Full width inputs and buttons */
+    max-width: 100%;
   }
 
   .top-songs-section h2 {
-    font-size: 20px; /* Smaller heading font */
+    font-size: 20px;
   }
 
   .top-songs-section li {
-    font-size: 14px; /* Smaller font size for song list */
+    font-size: 14px;
   }
 }
 
 @media screen and (max-width: 480px) {
-  /* Extra Mobile Styles */
   .lyrics-box {
     margin-top: 3%;
   }
 
   button {
-    padding: 12px 20px; /* Larger button on mobile for easier click */
+    padding: 12px 20px;
   }
 
   .top-songs-section li {
-    font-size: 13px; /* Smaller font size on very small screens */
+    font-size: 13px;
   }
 
   .lyrics {
-    font-size: 14px; /* Smaller font size for lyrics */
+    font-size: 14px;
   }
 }

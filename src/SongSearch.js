@@ -1,17 +1,21 @@
 import React, { useState } from "react";
 import axios from "axios";
-import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import Dialog from "@mui/material/Dialog";
+import DialogContent from "@mui/material/DialogContent";
+import DialogActions from "@mui/material/DialogActions";
 
-const SongSearch = ({ setError, setLyrics }) => {
+export default function SongSearch() {
   const [song, setSong] = useState("");
   const [artist, setArtist] = useState("");
+  const [lyrics, setLyrics] = useState("");
+  const [error, setError] = useState("");
+  const [open, setOpen] = useState("");
 
   const handleSearch = async () => {
     if (!song || !artist) {
-      setError("Please enter both song name and artist.");
+      setError("please enter both song name and artist");
       return;
     }
 
@@ -21,34 +25,54 @@ const SongSearch = ({ setError, setLyrics }) => {
         `https://api.lyrics.ovh/v1/${artist}/${song}`
       );
       setLyrics(response.data.lyrics);
+      setOpen(true);
     } catch (err) {
-      setError("Lyrics not found or an error occurred.");
+      setError("lyrics not found or an error occurred.");
       setLyrics("");
+      setOpen(true);
     }
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
     <Box className="lyrics-box">
       <div className="lyrics-container">
-        <h1>search your song lyrics</h1>
+        <h1 className="heading">search your song lyrics</h1>
         <div>
           <input
             type="text"
-            placeholder="Song name"
+            placeholder="song name"
             value={song}
             onChange={(e) => setSong(e.target.value)}
           />
           <input
             type="text"
-            placeholder="Artist name"
+            placeholder="artist name"
             value={artist}
             onChange={(e) => setArtist(e.target.value)}
           />
-          <button onClick={handleSearch}>Search</button>
+          <button onClick={handleSearch}>search 🔍</button>
         </div>
       </div>
+      <Dialog open={open} onClose={handleClose} fullWidth className="popup-box">
+        <DialogContent className="popup-content">
+          {error ? (
+            "Error"
+          ) : (
+            <Typography variant="body1" style={{ whiteSpace: "pre-wrap" }}>
+              {error || lyrics || "No lyrics found."}
+            </Typography>
+          )}
+        </DialogContent>
+        <DialogActions className="popup-bottom">
+          <button onClick={handleClose} className="button">
+            Close
+          </button>
+        </DialogActions>
+      </Dialog>
     </Box>
   );
-};
-
-export default SongSearch;
+}

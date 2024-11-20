@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SongSearch from "./SongSearch";
 import TopSongs from "./TopSongs";
-import "./App.css"; // Import the CSS file here
+import "./App.css";
 
 const App = () => {
   const [lyrics, setLyrics] = useState("");
